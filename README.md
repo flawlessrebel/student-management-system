@@ -8,7 +8,7 @@ What is the Student Management System?
 The Student Management System is a straightforward console application designed to help manage student records. It will provide basic functionalities to interact with student data, 
 making it a perfect learning ground for core C++ concepts like data structures, input/output operations, and basic file handling.
 
-Key Features (Planned)
+Key Features 
 Add Student: Input and store new student records (e.g., Name, ID, Grade).
 View Students: Display a list of all existing student records.
 Edit Student: Modify the details of an existing student record.
