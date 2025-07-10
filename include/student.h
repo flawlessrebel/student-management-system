@@ -1,10 +1,23 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-void addStudent();
-void viewStudents();
-void searchStudent();
-void editStudent();
-void deleteStudent();
+#include <vector>
+#include <string>
 
-#endif // STUDENT_H
+class Student {
+public:
+    int id;
+    std::string name;
+    std::string gender;
+    std::string email;
+    std::string dob;
+    std::string phoneNumber;
+    int age;
+    std::string grade;
+
+    void displayStudent() const;
+};
+
+void addStudent(std::vector<Student>& students);
+
+#endif
