@@ -1,31 +1,69 @@
-// logic for students operations
-
 #include <iostream>
-#include "../include/student.h"
+#include "student.h"
+#include <fstream>
 
 using namespace std;
 
-void addStudent() {
-    // TODO: Implement logic to add a student and write to file
-    cout << "[addStudent] function called\n";
+void Student::displayStudent() const {
+    cout << "Student ID: " << id << endl;
+    cout << "Name: " << name << endl;
+    cout << "Gender: " << gender << endl;
+    cout << "Email: " << email << endl;
+    cout << "Date of Birth: " << dob << endl;
+    cout << "Phone Number: " << phoneNumber << endl;
+    cout << "Age: " << age << endl;
+    cout << "Grade: " << grade << endl;
 }
 
-void viewStudents() {
-    // TODO: Implement logic to read and display all students
-    cout << "[viewStudents] function called\n";
-}
+void addStudent(vector<Student>& students) {
+    Student newStudent;
 
-void searchStudent() {
-    // TODO: Implement logic to search by name or ID
-    cout << "[searchStudent] function called\n";
-}
+    cout << "\n--- Add New Student ---" << endl;
 
-void editStudent() {
-    // TODO: Implement logic to modify an existing student
-    cout << "[editStudent] function called\n";
-}
+    cout << "Enter Student ID: ";
+    cin >> newStudent.id;
+    cin.ignore();
 
-void deleteStudent() {
-    // TODO: Implement logic to delete a student from records
-    cout << "[deleteStudent] function called\n";
+    cout << "Enter Name: ";
+    getline(cin, newStudent.name);
+
+    cout << "Enter Gender: ";
+    getline(cin, newStudent.gender);
+
+    cout << "Enter Email: ";
+    getline(cin, newStudent.email);
+
+    cout << "Enter Date of Birth (YYYY-MM-DD): ";
+    getline(cin, newStudent.dob);
+
+    cout << "Enter Phone Number: ";
+    getline(cin, newStudent.phoneNumber);
+
+    cout << "Enter Age: ";
+    cin >> newStudent.age;
+    cin.ignore();
+
+    cout << "Enter Grade: ";
+    getline(cin, newStudent.grade);
+
+    students.push_back(newStudent);
+
+    ofstream outFile("students.txt", ios::app);
+    if (!outFile) {
+        cerr << "Error opening students.txt for writing!" << endl;
+        return;
+    }
+
+    outFile << newStudent.id << ","
+            << newStudent.name << ","
+            << newStudent.gender << ","
+            << newStudent.email << ","
+            << newStudent.dob << ","
+            << newStudent.phoneNumber << ","
+            << newStudent.age << ","
+            << newStudent.grade << "\n";
+
+    outFile.close();
+
+    cout << "\nStudent added successfully!\n" << endl;
 }

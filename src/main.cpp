@@ -7,29 +7,42 @@
 using namespace std;
 
 int main() {
-    int choice;
+    vector<Student> studentList;
 
-    while (true) {
-        cout << "\n=== Student Management System ===\n";
-        cout << "1. Add Student\n";
-        cout << "2. View All Students\n";
-        cout << "3. Search Student\n";
-        cout << "4. Edit Student\n";
-        cout << "5. Delete Student\n";
-        cout << "0. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
+    addStudent(studentList);
 
-        switch (choice) {
-            case 1: addStudent(); break;
-            case 2: viewStudents(); break;
-            case 3: searchStudent(); break;
-            case 4: editStudent(); break;
-            case 5: deleteStudent(); break;
-            case 0: cout << "Goodbye!\n"; return 0;
-            default: cout << "Invalid choice. Try again.\n";
+    cout << "\n--- Current Students in System ---" << endl;
+
+    if (studentList.empty()) {
+        cout << "No students in the system yet." << endl;
+    } else {
+        for (const auto& student : studentList) {
+            student.displayStudent();
         }
     }
+    // int choice;
+
+    // while (true) {
+    //     cout << "\n=== Student Management System ===\n";
+    //     cout << "1. Add Student\n";
+    //     cout << "2. View All Students\n";
+    //     cout << "3. Search Student\n";
+    //     cout << "4. Edit Student\n";
+    //     cout << "5. Delete Student\n";
+    //     cout << "0. Exit\n";
+    //     cout << "Enter your choice: ";
+    //     cin >> choice;
+
+    //     switch (choice) {
+    //         case 1: addStudent(); break;
+    //         case 2: viewStudents(); break;
+    //         case 3: searchStudent(); break;
+    //         case 4: editStudent(); break;
+    //         case 5: deleteStudent(); break;
+    //         case 0: cout << "Goodbye!\n"; return 0;
+    //         default: cout << "Invalid choice. Try again.\n";
+    //     }
+    // }
 
     return 0;
 }
