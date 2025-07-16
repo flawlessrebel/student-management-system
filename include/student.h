@@ -21,6 +21,6 @@ void addStudent();
 
 void deleteStudent();
 
-// void editStudent();
+void editStudent();
 
 #endif
