@@ -1,9 +1,13 @@
-#include <iostream>
-#include "student.h"
-#include <fstream>
+#include <iostream> // for input/output operations
+#include "student.h" // for Student class
+#include <fstream> // for file operations
+#include <sstream> // for stringstream
+#include <string> // for string operations
+#include <cstdio> // for remove and rename functions
 
 using namespace std;
 
+// Implementation of the displayStudent method
 void Student::displayStudent() const {
     cout << "Student ID: " << id << endl;
     cout << "Name: " << name << endl;
@@ -15,7 +19,8 @@ void Student::displayStudent() const {
     cout << "Grade: " << grade << endl;
 }
 
-void addStudent(vector<Student>& students) {
+// Function to add a new student
+void addStudent() {
     Student newStudent;
 
     cout << "\n--- Add New Student ---" << endl;
@@ -46,8 +51,6 @@ void addStudent(vector<Student>& students) {
     cout << "Enter Grade: ";
     getline(cin, newStudent.grade);
 
-    students.push_back(newStudent);
-
     ofstream outFile("students.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening students.txt for writing!" << endl;
@@ -66,4 +69,48 @@ void addStudent(vector<Student>& students) {
     outFile.close();
 
     cout << "\nStudent added successfully!\n" << endl;
+}
+
+//Delete a student by ID
+void deleteStudent() {
+    string targetID;
+    cout << "\n--- Delete Student ---\n";
+    cout << "Enter Student ID to delete: ";
+    cin >> targetID;
+
+    ifstream inFile("students.txt");
+    ofstream tempFile("temp.txt");
+
+    if (!inFile || !tempFile) {
+        cerr << "Error opening files!\n";
+        return;
+    }
+
+    string line;
+    bool found = false;
+
+    while (getline(inFile, line)) {
+        stringstream ss(line);
+        string id;
+        getline(ss, id, ',');
+
+        if (id != targetID) {
+            tempFile << line << "\n";
+        } else {
+            found = true;
+        }
+    }
+
+    inFile.close();
+    tempFile.close();
+
+    // Replace original file if student was found
+    if (found) {
+        remove("students.txt");
+        rename("temp.txt", "students.txt");
+        cout << "Student with ID " << targetID << " deleted successfully.\n";
+    } else {
+        remove("temp.txt"); // clean up
+        cout << "Student with ID " << targetID << " not found.\n";
+    }
 }
