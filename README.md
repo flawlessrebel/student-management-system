@@ -21,6 +21,42 @@ View the product planning on [Notion](https://www.notion.so/Student-Management-S
 
 ## Structure
 
+<pre lang="bash">
+.
+├── README.md
+├── assets
+│   ├── student-management-system-erd.png
+│   └── student-management-system-use-case.png
+├── include
+│   ├── student.h
+│   └── utils.h
+├── src
+│   ├── main.cpp
+│   ├── student.cpp
+│   └── utils.cpp
+├── studentApp
+└── students.txt
+</pre>
+
 ## Entity Relationship Diagram
 
+![ERD Diagram](assets/student-management-system-erd.png)
+
+## Use Case Diagram
+
+![ERD Diagram](assets/student-management-system-use-case.png)
+
 ## How to Run
+
+To compile and run the Student Management System:
+##### Prerequistes
+- C++ compiler(g++)
+- Terminal or command-line environment
+##### Build the App
+Open your terminal in the project root and run:
+```bash
+g++ src/main.cpp src/student.cpp src/utils.cpp -Iinclude -o studentApp
+```
+##### Run the App
+```bash
+./studentApp
