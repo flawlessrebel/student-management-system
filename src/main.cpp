@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "../include/student.h"
 #include "../include/utils.h"
 
@@ -15,6 +16,14 @@ int main() {
         cout << "4. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number between 1 and 4.";
+            continue;
+        }
+
         cin.ignore();
 
         switch (choice) {
