@@ -24,9 +24,9 @@ int main() {
             case 2:
                 deleteStudent();
                 break;
-            // case 3:
-            //     editStudent();
-            //     break;
+            case 3:
+                editStudent();
+                break;
             case 4:
                 cout << "Exiting the system." << endl;
                 break;
