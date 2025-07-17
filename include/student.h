@@ -1,7 +1,6 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include <vector>
 #include <string>
 
 class Student {
@@ -18,6 +17,10 @@ public:
     void displayStudent() const;
 };
 
-void addStudent(std::vector<Student>& students);
+void addStudent();
+
+void deleteStudent();
+
+void editStudent();
 
 #endif
