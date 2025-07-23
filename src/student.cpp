@@ -4,6 +4,7 @@
 #include <sstream> // for stringstream
 #include <string> // for string operations
 #include <cstdio> // for remove and rename functions
+#include <vector> // for using vectors
 
 using namespace std;
 
@@ -205,4 +206,73 @@ void editStudent() {
         remove("temp.txt");
         cout << "Student with ID " << targetID << " not found.\n";
     }
+}
+
+// Function to search for a student by ID
+void searchStudent() {
+    ifstream file("students.txt");
+    if (!file.is_open()) {
+        cout << "Unable to open student records." << endl;
+        return;
+    }
+
+    cout << "Search by:\n1. Student ID\n2. Student Name\nEnter your choice: ";
+    int choice;
+    cin >> choice;
+    cin.ignore();
+
+    string query;
+    cout << "Enter search value: ";
+    getline(cin, query);
+
+    string line;
+    bool found = false;
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string id, name, gender, email, dob, phoneNumber, age, grade;
+        getline(ss, id, ',');
+        getline(ss, name, ',');
+        getline(ss, gender, ',');
+        getline(ss, email, ',');
+        getline(ss, dob, ',');
+        getline(ss, phoneNumber, ',');
+        getline(ss, age, ',');
+        getline(ss, grade, ',');
+
+        if ((choice == 1 && id == query) || 
+            (choice == 2 && name == query)) {
+            cout << "\n--- Student Found ---" << endl;
+            cout << "ID: " << id 
+                << "\nName: " << name 
+                << "\nGender: " << gender
+                << "\nEmail: " << email
+                << "\nDOB: " << dob
+                << "\nPhone Number: " << phoneNumber
+                << "\nAge: " << age
+                << "\nGrade: " << grade << endl;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "No matching student found." << endl;
+    }
+
+    file.close();
+}
+
+// Function to view all students
+void viewStudent(const std::vector<Student>& students) {
+    if (students.empty()) {
+        std::cout << "\nNo students available in the system.\n";
+        return;
+    }
+
+    std::cout << "\n--- List of All Students ---\n";
+    for (const auto& student : students) {
+        student.displayStudent();
+        std::cout << "----------------------------\n";
+    }
 }
