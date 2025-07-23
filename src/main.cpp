@@ -10,7 +10,7 @@
 using namespace std;
 
 int main() {
-    vector<Student> studentList;
+    vector<Student> student;
 
     // Load existing students from file
     ifstream file("students.txt");
@@ -33,7 +33,7 @@ int main() {
             s.id = stoi(idStr);
             s.age = stoi(ageStr);
 
-            studentList.push_back(s);
+            student.push_back(s);
         }
         file.close();
     }
@@ -75,7 +75,7 @@ int main() {
                 searchStudent();
                 break;
             case 5:
-                viewStudent(studentList);
+                viewStudent(student);
                 break;
             case 6:
                 cout << "Exiting the system." << endl;
@@ -84,6 +84,5 @@ int main() {
                 cout << "Invalid choice, please try again." << endl;
         }
     } while (choice != 6);
-
-    return 0;
+    return 0;
 }
