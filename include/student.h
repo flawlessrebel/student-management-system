@@ -2,6 +2,7 @@
 #define STUDENT_H
 
 #include <string>
+#include <vector>
 
 class Student {
 public:
@@ -22,5 +23,9 @@ void addStudent();
 void deleteStudent();
 
 void editStudent();
+
+void searchStudent();
+
+void deleteStudent(const std::vector<Student>& students);
 
 #endif
