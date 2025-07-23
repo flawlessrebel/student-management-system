@@ -26,6 +26,6 @@ void editStudent();
 
 void searchStudent();
 
-void deleteStudent(const std::vector<Student>& students);
+void deleteStudent(const std::vector<Student>& student);
 
 #endif
