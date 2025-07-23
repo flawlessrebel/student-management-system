@@ -1,5 +1,6 @@
 #include <iostream> // for input/output operations
-#include "student.h" // for Student class
+#include "../include/student.h" // for Student class
+#include "../include/utils.h" // for utility functions
 #include <fstream> // for file operations
 #include <sstream> // for stringstream
 #include <string> // for string operations
@@ -264,15 +265,15 @@ void searchStudent() {
 }
 
 // Function to view all students
-void viewStudent(const std::vector<Student>& students) {
-    if (students.empty()) {
+void viewStudent(const std::vector<Student>& student) {
+    if (student.empty()) {
         std::cout << "\nNo students available in the system.\n";
         return;
     }
 
     std::cout << "\n--- List of All Students ---\n";
-    for (const auto& student : students) {
+    for (const auto& student : student) {
         student.displayStudent();
         std::cout << "----------------------------\n";
-    }
+}
 }
